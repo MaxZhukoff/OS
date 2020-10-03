@@ -1,0 +1,9 @@
+#!/bin/bash
+while [[ "$string" != q ]]
+do
+read string
+if [[ "$string" == q ]]
+then echo "$result"
+fi
+result+="$string"
+done

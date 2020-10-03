@@ -1,0 +1,2 @@
+#!/bin/bash
+grep -Esoh "[[:alnum:]._-]+\@[[:alnum:]._-]+\.[[:alnum:]]+" /etc/* | awk '{print}' ORS=', ' > emails.lst
