@@ -1,0 +1,16 @@
+#!/bin/bash
+maxsize=0
+maxpid=0
+for pid in $(ps -Ao pid | tail -n +2)
+do
+size=$(grep -Eshi "VmRSS" /proc/$pid/status | grep -o "[0-9]\+")
+if [ $size -gt $maxsize ] 2>/dev/null
+then
+maxsize=$size
+maxpid=$pid
+fi
+done
+echo "In /proc/;"
+echo "$maxpid $maxsize"
+echo "In top memory:"
+top -bn 1 | tail -n +8 | awk '{print $1 " " $6}' | sort -nrk 2 | head -1
