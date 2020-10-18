@@ -1,0 +1,4 @@
+#!/bin/bash
+ps -e o pid,user,command | awk '$2=="user" {print $0}' | wc -l > result_1
+ps -e o pid,user,command | awk '$2=="user" {print $1":"$3}' >> result_1
+
