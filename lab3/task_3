@@ -1,0 +1,3 @@
+#!/bin/bash
+echo "5 * * * * /home/user/lab3/task_1" > cron_3
+crontab cron3

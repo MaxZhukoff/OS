@@ -1,0 +1,9 @@
+#!/bin/bash
+./cycle_4 &
+pid1=$!
+./cycle_4 &
+pid2=$!
+./cycle_4 &
+pid3=$!
+kill $pid3
+renice -n 10 -p $pid1

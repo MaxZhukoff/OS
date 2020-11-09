@@ -1,0 +1,41 @@
+#!/bin/bash
+NUM=1
+MODE="addition"
+(tail -f pipe_5) | while true
+do
+read LINE
+case $LINE in
+"+")
+	MODE="addition"
+	echo $MODE
+;;
+"*")
+	MODE="multiplication"
+	echo $MODE
+;;
+[0-9]*)
+	case $MODE in
+		"addition")
+		let "NUM = NUM + LINE"
+		echo $NUM
+		;;
+		"multiplication")
+		let "NUM = NUM * LINE"
+		echo $NUM
+		;;
+	esac
+;;
+"QUIT")
+	killall tail
+	echo "Stopped"
+	killall generator_5
+	exit
+;;
+*)
+	killall tail
+	echo "Input data error"
+	killall generator_5
+	exit
+;;
+esac
+done
