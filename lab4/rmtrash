@@ -1,0 +1,20 @@
+#!/bin/bash
+if [[ $# -ne 1 ]]; then
+        echo "Parameter error"
+        exit
+fi
+if [[ !(-f "./$1") ]]; then
+        echo "There is no such file in the directory"
+        exit
+fi
+if [[ !(-d  ~/.trash) ]]; then
+        mkdir ~/.trash
+fi
+name=0
+path="$(pwd "$1")/"$1""
+while [ -f ~/.trash/$name ] ; do
+        let "name = name + 1"
+done
+ln "$path" ~/.trash/$name
+rm "./$1"
+echo "Path to file: "$path"; Link name: $name" >> ~/.trash.log
