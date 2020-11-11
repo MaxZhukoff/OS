@@ -30,8 +30,7 @@ grep "$1" ~/.trash.log | while read -r line; do
                                 echo -n "Enter new name: "
                                 read newName </dev/tty
                                 newPath=$(sed "s/\/"$name"/\/"$newName"/" <<< "$path")
-                                if [[ !(-f "$newPath") ]];
-                                        then
+                                if [[ !(-f "$newPath") ]]; then
                                                 name="$newName"
                                                 path="$newPath"
                                                 break
