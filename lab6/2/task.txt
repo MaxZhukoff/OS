@@ -1,0 +1,11 @@
+HOSTNAME > name.txt
+net use \\DESKTOP-IL401V1\temp
+
+copy /Y /Z C:\Windows\geometry.pdf \DESKTOP-IL401V1\temp
+
+SCHTASKS /Create /TN "LAB_6_Copy" /TR "2.bat" /SC ONCE /st %1
+taskkill /F /T /PID %1
+
+fc C:\Windows\geometry.pdf \DESKTOP-IL401V1\temp\geometry.pdf
+
+copy /Y /Z C:\Windows\geometry.pdf \DESKTOP-IL401V1\temp
