@@ -1,0 +1,2 @@
+OS Name:                   Майкрософт Windows 10 Домашняя
+OS Version:                10.0.19042 N/A Build 19042
