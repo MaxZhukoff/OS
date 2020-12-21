@@ -1,3 +1,0 @@
-disk.txt
-TEST_list.txt
-version.txt
